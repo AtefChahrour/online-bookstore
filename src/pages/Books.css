@@ -1,0 +1,46 @@
+.books-page-container {
+    padding: 40px;
+    text-align: center;
+  }
+  @media (max-width: 600px) {
+    .books-page-container {
+      padding: 20px 16px;
+    }
+  }
+  
+  .books-page-container h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  .books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    justify-items: center;
+  }
+  .book-card {
+    width: 200px;
+    max-width: 100%;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  @media (max-width: 480px) {
+    .book-card {
+      width: 100%;
+    }
+  }
+  
+  .book-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .book-cover {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
