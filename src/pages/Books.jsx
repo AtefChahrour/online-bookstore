@@ -2,6 +2,13 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import useCartStore from "../store/cartStore";
 import "./Books.css";
+
+import book1 from "../assets/book1.jpg";
+import book2 from "../assets/book2.jpg";
+import book3 from "../assets/book3.jpg";
+import book4 from "../assets/book4.jpg";
+import book5 from "../assets/book5.jpg";
+
 function Books() {
   const addToCart = useCartStore((state) => state.addToCart);
   const books = [
@@ -9,31 +16,31 @@ function Books() {
       id: 1,
       title: "IT",
       author: "Stephen King",
-      image: "/src/assets/book1.jpg",
+      image: book1,
     },
     {
       id: 2,
       title: "Harry Potter & The Half Blooded Prince",
       author: "Author Two",
-      image: "/src/assets/book2.jpg",
+      image: book2,
     },
     {
       id: 3,
       title: "Pet Semetary",
       author: "Stephen King",
-      image: "/src/assets/book3.jpg",
+      image: book3,
     },
     {
       id: 4,
       title: "The Davinci Code",
       author: "Dan Brown",
-      image: "/src/assets/book4.jpg",
+      image: book4,
     },
     {
       id: 5,
       title: "Murder On The Orient Express",
       author: "Agatha Christie",
-      image: "/src/assets/book5.jpg",
+      image: book5,
     },
   ];
 
