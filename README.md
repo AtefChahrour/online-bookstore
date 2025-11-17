@@ -1,17 +1,30 @@
-# React + Vite
+Online Bookstore 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple online bookstore built with React,And Vite
+Users can browse books, add items to the cart, and perform an order.
+Pages:
+- Home  
+- Books  
+- About  
+- Contact  
+- Cart
 
-Currently, two official plugins are available:
+ Books Page  
+- Displays books  
+- Clicking a book adds it to the cart
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Technologies Used:
 
-## React Compiler
+- React
+- Vite
+- React Router DOM
+- CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# online-bookstore
+<img width="1440" height="815" alt="Screenshot 2025-11-18 at 1 30 24 AM" src="https://github.com/user-attachments/assets/545fefb8-575f-4f08-87b8-9b5989830df1" />
+
+<img width="1440" height="810" alt="Screenshot 2025-11-18 at 1 28 52 AM" src="https://github.com/user-attachments/assets/d9ccae84-cfa1-4984-a6bb-60dc9fbf6da0" />
+<img width="1440" height="804" alt="Screenshot 2025-11-18 at 1 29 16 AM" src="https://github.com/user-attachments/assets/7606d37c-edf4-43c6-95ec-65057fe62070" />
+<img width="1108" height="471" alt="Screenshot 2025-11-18 at 1 29 46 AM" src="https://github.com/user-attachments/assets/a8d92c0e-cade-47f2-84d3-dae812d40678" />
+<img width="605" height="315" alt="Screenshot 2025-11-18 at 1 30 03 AM" src="https://github.com/user-attachments/assets/0ffa3966-9604-4daf-86c9-4bfe19c50719" />
