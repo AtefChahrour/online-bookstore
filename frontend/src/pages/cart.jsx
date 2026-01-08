@@ -171,8 +171,6 @@
             </div>
 
             <div style={{ marginTop: 12, color: "var(--muted)" }}>
-              Next step: we will add Checkout to create rows in `orders` and
-              `order_items`.
             </div>
           </>
         )}
