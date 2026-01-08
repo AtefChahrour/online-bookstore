@@ -9,7 +9,6 @@ export default function BookList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
-
   const [count, setCount] = useState(cartCount());
 
   useEffect(() => {
@@ -32,35 +31,44 @@ export default function BookList() {
     addToCart(book, 1);
     setCount(cartCount());
     setMsg(`Added "${book.title}" to cart.`);
-    setTimeout(() => setMsg(""), 1500);
+    setTimeout(() => setMsg(""), 1200);
   }
 
   return (
-    <div style={{ maxWidth: 1000, margin: "40px auto", padding: 16 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <h1 style={{ margin: 0 }}>Shop</h1>
-        <div style={{ marginLeft: "auto" }}>
-          <Link to="/cart">Cart ({count})</Link>
-        </div>
+    <div className="container">
+      <div className="row" style={{ justifyContent: "space-between" }}>
+        <h1 className="h1">Shop</h1>
+        <Link className="btn" to="/cart">Cart ({count})</Link>
       </div>
 
-      {msg && <div style={{ marginTop: 10, color: "green" }}>{msg}</div>}
-      {loading && <div style={{ marginTop: 10 }}>Loading...</div>}
-      {error && <div style={{ marginTop: 10, color: "crimson" }}>{error}</div>}
+      {msg && <div className="msg-ok" style={{ marginTop: 12 }}>{msg}</div>}
+      {loading && <div style={{ marginTop: 12, color: "var(--muted)" }}>Loading...</div>}
+      {error && <div className="msg-err" style={{ marginTop: 12 }}>{error}</div>}
 
       {!loading && !error && (
-        <div style={{ marginTop: 16, display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
-          {books.map((b) => (
-            <div key={b.id} style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12 }}>
-              <div style={{ fontWeight: 700 }}>{b.title}</div>
-              <div style={{ opacity: 0.8 }}>{b.author}</div>
-              <div style={{ marginTop: 8 }}>${Number(b.price).toFixed(2)}</div>
+        <div className="grid" style={{ marginTop: 16 }}>
+          {books.map((b) => {
+            const src = b.image_key ? `/covers/${b.image_key}` : "";
+            return (
+              <div key={b.id} className="card">
+                {b.image_key ? (
+                  <img className="cover" src={src} alt={`${b.title} cover`} />
+                ) : null}
 
-              <button onClick={() => buy(b)} style={{ marginTop: 10, padding: "8px 10px", cursor: "pointer" }}>
-                Buy
-              </button>
-            </div>
-          ))}
+                <div style={{ marginTop: 12, fontSize: 18, fontWeight: 800 }}>
+                  {b.title}
+                </div>
+                <div style={{ color: "var(--muted)", marginTop: 4 }}>{b.author}</div>
+                <div style={{ marginTop: 10, fontWeight: 800 }}>
+                  ${Number(b.price).toFixed(2)}
+                </div>
+
+                <button className="btn btn-primary" style={{ marginTop: 12 }} onClick={() => buy(b)}>
+                  Buy
+                </button>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

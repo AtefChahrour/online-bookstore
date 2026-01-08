@@ -4,7 +4,6 @@ import { requireAuth } from "../middleware/auth.js";
 
 const router = express.Router();
 
-// GET /api/books  -> all books
 router.get("/", async (req, res) => {
   try {
     const [rows] = await pool.execute(
@@ -17,7 +16,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET /api/books/featured -> 3 books
 router.get("/featured", async (req, res) => {
   try {
     const [rows] = await pool.execute(
@@ -30,7 +28,6 @@ router.get("/featured", async (req, res) => {
   }
 });
 
-// POST /api/books -> add book (requires login)
 router.post("/", requireAuth, async (req, res) => {
   try {
     const { title, author, image_key, price } = req.body ?? {};

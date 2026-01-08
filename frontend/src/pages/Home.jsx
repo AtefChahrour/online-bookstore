@@ -24,23 +24,26 @@ export default function Home() {
   }, [API]);
 
   return (
-    <div style={{ maxWidth: 900, margin: "40px auto", padding: 16 }}>
-      <h1>Home</h1>
-      <p>Featured books</p>
+    <div className="container">
+      <h1 className="h1">Featured books</h1>
+      <div className="p">Top picks from the store</div>
 
-      {loading && <div>Loading...</div>}
-      {error && <div style={{ color: "crimson" }}>{error}</div>}
+      {loading && <div style={{ marginTop: 12, color: "var(--muted)" }}>Loading...</div>}
+      {error && <div className="msg-err" style={{ marginTop: 12 }}>{error}</div>}
 
       {!loading && !error && (
-        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <div className="grid" style={{ marginTop: 16 }}>
           {books.map((b) => (
-            <div key={b.id} style={{ border: "1px solid #ddd", borderRadius: 10, padding: 12 }}>
-              {/* If you enabled backend static images, this will work when you add files */}
-              {/* <img src={`${API}/images/${b.image_key}`} alt={b.title} style={{ width: "100%", borderRadius: 8 }} /> */}
+            <div key={b.id} className="card">
+              {b.image_key ? (
+                <img className="cover" src={`/covers/${b.image_key}`} alt={`${b.title} cover`} />
+              ) : null}
 
-              <h3 style={{ margin: "8px 0" }}>{b.title}</h3>
-              <div style={{ opacity: 0.8 }}>{b.author}</div>
-              <div style={{ marginTop: 8, fontWeight: 600 }}>${Number(b.price).toFixed(2)}</div>
+              <div style={{ marginTop: 12, fontSize: 18, fontWeight: 800 }}>{b.title}</div>
+              <div style={{ color: "var(--muted)", marginTop: 4 }}>{b.author}</div>
+              <div style={{ marginTop: 10, fontWeight: 800 }}>
+                ${Number(b.price).toFixed(2)}
+              </div>
             </div>
           ))}
         </div>

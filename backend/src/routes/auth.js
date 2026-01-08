@@ -24,7 +24,6 @@ router.post("/signup", async (req, res) => {
       return res.status(400).json({ message: "Password must be at least 8 characters." });
     }
 
-    // Check duplicate email
     const [existing] = await pool.execute(
       "SELECT id FROM users WHERE email = ? LIMIT 1",
       [safeEmail]
@@ -35,7 +34,6 @@ router.post("/signup", async (req, res) => {
 
     const passwordHash = await bcrypt.hash(password, 10);
 
-    // Insert user (use NOW() for created_at so it works even if DB has no default)
     const [result] = await pool.execute(
       "INSERT INTO users (name, email, password_hash, created_at) VALUES (?, ?, ?, NOW())",
       [safeName, safeEmail, passwordHash]
@@ -47,7 +45,6 @@ router.post("/signup", async (req, res) => {
       email: safeEmail,
     };
 
-    // Optional: auto-login after signup
     const token = jwt.sign(
       { sub: user.id, email: user.email },
       process.env.JWT_SECRET,

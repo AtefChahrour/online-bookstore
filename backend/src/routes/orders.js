@@ -4,19 +4,12 @@ import pool from "../db.js";
 
 const router = express.Router();
 
-/**
- * POST /api/orders/checkout
- * body: { items: [{ book_id: number, quantity: number }, ...] }
- * auth: Bearer token
- */
 router.post("/checkout", auth, async (req, res) => {
   const items = req.body?.items;
 
   if (!Array.isArray(items) || items.length === 0) {
     return res.status(400).json({ message: "Cart is empty." });
   }
-
-  // basic validation
   for (const it of items) {
     if (!it?.book_id || !Number.isFinite(Number(it.quantity)) || Number(it.quantity) <= 0) {
       return res.status(400).json({ message: "Invalid cart items." });
@@ -29,8 +22,6 @@ router.post("/checkout", auth, async (req, res) => {
   try {
     await conn.beginTransaction();
 
-    // IMPORTANT:
-    // If your `orders` table has different columns, adjust this INSERT to match.
     const [orderRes] = await conn.query(
       "INSERT INTO orders (user_id, total, created_at) VALUES (?, ?, NOW())",
       [userId, 0]
